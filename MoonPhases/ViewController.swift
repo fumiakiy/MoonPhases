@@ -10,37 +10,37 @@ import UIKit
 
 class ViewController: UIViewController {
   
-  private var v: MoonView?
+  @IBOutlet weak var v: MoonView!
+
+  private var tapStart: CGPoint = CGPoint()
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = UIColor.blue
-    v = MoonView(frame: view.frame)
-    v?.layer.borderWidth = 2
-    v?.layer.borderColor = UIColor.orange.cgColor
-    view.addSubview(v!)
+    v.angle = 0.01
   }
 
-  private var start: CGPoint = CGPoint()
   @IBAction func panGesture(_ sender: UIPanGestureRecognizer) {
     let p = sender.translation(in: view)
     switch sender.state {
     case .began:
-      start = CGPoint(x: p.x, y: p.y)
+      tapStart = CGPoint(x: p.x, y: p.y)
     case .ended:
-      start = CGPoint()
+      tapStart = CGPoint()
     case .changed:
-      let delta = p.y - start.y
-      if (delta > 0) {
-        v?.angle -= delta / 100
-      } else {
-        v?.angle += -delta / 100
-      }
-      v?.setNeedsDisplay()
-      print(">>>>> \(v!.angle)")
-      start = CGPoint(x: p.x, y: p.y)
+      fillMoonAt(point: p)
+      v.setNeedsDisplay()
+      tapStart = CGPoint(x: p.x, y: p.y)
     default:
       break
+    }
+  }
+
+  private func fillMoonAt(point: CGPoint) {
+    let delta = point.y - tapStart.y
+    if (delta > 0) {
+      v.angle -= delta / 100
+    } else {
+      v.angle += -delta / 100
     }
   }
 }
