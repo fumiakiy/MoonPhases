@@ -13,6 +13,7 @@
 		A515FF752211CD2C0021267B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A515FF742211CD2C0021267B /* Assets.xcassets */; };
 		A515FF782211CD2C0021267B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A515FF762211CD2C0021267B /* LaunchScreen.storyboard */; };
 		A515FF832211CD2C0021267B /* MoonPhasesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A515FF822211CD2C0021267B /* MoonPhasesTests.swift */; };
+		A515FF8E2211CD4C0021267B /* MoonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A515FF8D2211CD4C0021267B /* MoonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		A515FF7E2211CD2C0021267B /* MoonPhasesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoonPhasesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A515FF822211CD2C0021267B /* MoonPhasesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonPhasesTests.swift; sourceTree = "<group>"; };
 		A515FF842211CD2C0021267B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A515FF8D2211CD4C0021267B /* MoonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				A515FF742211CD2C0021267B /* Assets.xcassets */,
 				A515FF762211CD2C0021267B /* LaunchScreen.storyboard */,
 				A515FF792211CD2C0021267B /* Info.plist */,
+				A515FF8D2211CD4C0021267B /* MoonView.swift */,
 			);
 			path = MoonPhases;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A515FF8E2211CD4C0021267B /* MoonView.swift in Sources */,
 				A515FF702211CD2B0021267B /* ViewController.swift in Sources */,
 				A515FF6E2211CD2B0021267B /* AppDelegate.swift in Sources */,
 			);
