@@ -29,8 +29,8 @@ class MoonView: UIView {
     let radius: CGFloat = min(frame.maxX, frame.maxY) / 8
     let center = CGPoint(x: (frame.maxX - frame.minX) / 2, y: (frame.maxY - frame.minY) / 2)
 
-    let path: UIBezierPath = UIBezierPath(arcCenter: center, radius: radius, startAngle: -pi_2, endAngle: pi_2, clockwise: false)
-    path.addArc(withCenter: CGPoint(x: center.x + radius * tan(angle), y: center.y), radius: CGFloat(radius) / CGFloat(cosf(Float(angle))), startAngle: pi_2 - (-angle), endAngle: -angle - pi_2, clockwise: true)
+    let path: UIBezierPath = UIBezierPath(arcCenter: center, radius: radius, startAngle: -pi_2, endAngle: pi_2, clockwise: true)
+    path.addArc(withCenter: CGPoint(x: center.x - radius * tan(angle), y: center.y), radius: CGFloat(radius) / CGFloat(cosf(Float(angle))), startAngle: pi_2 - (angle), endAngle: angle - pi_2, clockwise: false)
     path.close()
     
     context.addPath(path.cgPath)
