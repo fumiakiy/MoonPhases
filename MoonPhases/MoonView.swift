@@ -44,10 +44,18 @@ public class MoonView: UIView {
     super.draw(rect)
     guard let context = UIGraphicsGetCurrentContext() else { return }
 
-    let radius: CGFloat = min(rect.maxX, rect.maxY) / 2
-    let x = (rect.maxX - rect.minX) / 2
-    let y = rect.height - ((rect.height / 2) - rect.width) * _angle - rect.width
+    // Radius is a half of the rect's width
+    let radius: CGFloat = rect.width / 2
+    // X position is always the center of the rect
+    let x = rect.width / 2
+    // Y position moves depending on the angle from the bottom (the smallest angle) to the top (the largest angle)
+    // `rect.width` is used as the height of the circle here
+    let y = rect.height - ((rect.height / 2) - (rect.width / 2)) * _angle - (rect.width / 2)
     let center = CGPoint(x: x, y: y)
+
+    // The whole (full) moon that appears shadowed by the earth in the back
+    context.setFillColor(_fillColor.withAlphaComponent(0.2).cgColor)
+    context.fillEllipse(in: CGRect(x: 0, y: (y - rect.width / 2), width: rect.width, height: rect.width))
 
     // Outside arc - the shape of the moon
     let path: UIBezierPath = UIBezierPath(arcCenter: center, radius: radius, startAngle: -MoonView.PI_2, endAngle: MoonView.PI_2, clockwise: true)
@@ -65,5 +73,22 @@ public class MoonView: UIView {
     context.addPath(path.cgPath)
     context.setFillColor(_fillColor.cgColor)
     context.fillPath()
+  }
+  
+  public func draw2(_ rect: CGRect) {
+    super.draw(rect)
+    guard let context = UIGraphicsGetCurrentContext() else { return }
+    
+    // Radius is a half of the rect's width
+    let radius: CGFloat = rect.width / 2
+    // X position is always the center of the rect
+    let x = rect.width / 2
+    // Y position moves depending on the angle from the bottom (the smallest angle) to the top (the largest angle)
+    // `rect.width` is used as the height of the circle here
+    let y = rect.height - ((rect.height / 2) - (rect.width / 2)) * _angle - (rect.width / 2)
+    let center = CGPoint(x: x, y: y)
+
+    context.setFillColor(UIColor(displayP3Red: 1, green: 1, blue: 0, alpha: 0.5).cgColor)
+    context.fillEllipse(in: CGRect(x: 0, y: 0, width: rect.width, height: rect.width))
   }
 }
